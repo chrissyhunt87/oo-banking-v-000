@@ -9,11 +9,11 @@ class Transfer
   end
 
   def valid?
-    sender.valid? && receiver.valid? && sender.balance > amount ? true : false
+    sender.valid? && receiver.valid? ? true : false
   end
 
   def execute_transaction
-    if !self.valid?
+    if !self.valid? && sender.balance > amount
       "Transaction rejected. Please check your account balance."
     elsif self.status != "complete"
       sender.balance -= @amount
