@@ -20,7 +20,6 @@ class Transfer
     elsif self.status == "complete"
       "Error! You have already executed this transaction."
     else
-      binding.pry
       sender.balance -= self.amount
       receiver.balance += self.amount
       self.status = "complete"
