@@ -15,12 +15,14 @@ class Transfer
   def execute_transaction
     if !self.valid? || sender.balance > amount
       "Transaction rejected. Please check your account balance."
-    if self.status != "complete"
+    elsif self.status == "complete"
+      "Error! You have already executed this transaction."
+    else
       sender.balance -= self.amount
       receiver.balance += self.amount
       self.status = "complete"
     else
-      "Error! You have already executed this transaction."
     end
   end
+  
 end
