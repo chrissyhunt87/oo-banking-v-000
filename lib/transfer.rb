@@ -21,9 +21,7 @@ class Transfer
     elsif self.status == "complete"
       "Error! You have already executed this transaction."
     else
-      @last_sender = self.sender
-      @last_receiver = self.receiver
-      @last_amount = self.amount
+      @last_sender, @last_receiver, @last_amount = self.sender, self.receiver, self.amount
       sender.balance -= self.amount
       receiver.balance += self.amount
       self.status = "complete"
