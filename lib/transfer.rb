@@ -16,8 +16,8 @@ class Transfer
     if !self.valid? || sender.balance > amount
       "Transaction rejected. Please check your account balance."
     elsif self.status != "complete"
-      sender.balance -= @amount
-      receiver.balance += @amount
+      sender.balance -= self.amount
+      receiver.balance += self.amount
       self.status = "complete"
     else
       "Error! You have already executed this transaction."
