@@ -13,8 +13,12 @@ class Transfer
   end
 
   def execute_transaction
-    sender.balance -= @amount
-    receiver.balance += @amount
-    self.status = "complete"
+    if self.status != "complete"
+      sender.balance -= @amount
+      receiver.balance += @amount
+      self.status = "complete"
+    else
+      "Error! You have already executed this transaction."
+    end
   end
 end
