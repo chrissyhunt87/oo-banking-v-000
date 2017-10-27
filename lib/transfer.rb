@@ -21,6 +21,9 @@ class Transfer
     elsif self.status == "complete"
       "Error! You have already executed this transaction."
     else
+      @last_sender = self.sender
+      @last_receiver = self.receiver
+      @last_amount = self.amount
       sender.balance -= self.amount
       receiver.balance += self.amount
       self.status = "complete"
@@ -28,7 +31,7 @@ class Transfer
   end
 
   def reverse_transfer
-    
+
   end
 
 end
