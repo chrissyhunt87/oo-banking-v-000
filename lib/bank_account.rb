@@ -15,4 +15,8 @@ class BankAccount
   def valid?
     true if self.status == "open " && self.display_balance > 0
   end
+
+  def deposit(money)
+    @balance += money
+  end
 end
